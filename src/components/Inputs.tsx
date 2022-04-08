@@ -29,6 +29,7 @@ export const Input = styled.TextInput<InputProps>`
 
 Input.defaultProps = {
   bg: 'backgroundSecondary',
+  paddingX: 'big',
   height: 45,
   borderWidth: 1,
   borderColor: 'onBackground',

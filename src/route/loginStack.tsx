@@ -11,9 +11,15 @@ const {Navigator, Screen} = createNativeStackNavigator();
 export const LoginStack = () => {
   return (
     <Navigator>
-      <Screen name="login" component={Login} />
+      <Screen
+        name="login"
+        component={Login}
+        options={{
+          headerShown: false,
+        }}
+      />
       <Screen name="register" component={Register} />
-      <Screen name="restPssw" component={ResetPssw} />
+      <Screen name="resetPssw" component={ResetPssw} />
     </Navigator>
   );
 };

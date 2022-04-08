@@ -9,7 +9,13 @@ const {Navigator, Screen} = createNativeStackNavigator();
 export const AppStack = () => {
   return (
     <Navigator>
-      <Screen name="home" component={Home} />
+      <Screen
+        name="home"
+        component={Home}
+        options={{
+          headerShown: false,
+        }}
+      />
       <Screen name="chat" component={Chat} />
     </Navigator>
   );

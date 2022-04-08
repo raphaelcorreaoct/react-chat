@@ -3,13 +3,13 @@ import {TouchableOpacityProps} from 'react-native';
 import {BoxProps, TouchableBox} from './Box';
 import {Txt, TxtComponentProps} from './Text';
 
-export type ButtonProps = TouchableOpacityProps & {
-  shape?: BoxProps;
-  text?: TxtComponentProps;
-  title: string;
-};
+export type ButtonProps = TouchableOpacityProps &
+  BoxProps & {
+    text?: TxtComponentProps;
+    title: string;
+  };
 
-export const PrimaryButton = ({title, shape, text, ...props}: ButtonProps) => {
+export const PrimaryButton = ({title, text, ...props}: ButtonProps) => {
   return (
     <TouchableBox
       bg="brandPrimary"
@@ -17,7 +17,6 @@ export const PrimaryButton = ({title, shape, text, ...props}: ButtonProps) => {
       justifyContent="center"
       alignItems="center"
       borderRadius="middle"
-      {...shape}
       {...props}>
       <Txt color="onBrandPrimary" {...text}>
         {title}
@@ -28,7 +27,7 @@ export const PrimaryButton = ({title, shape, text, ...props}: ButtonProps) => {
 
 export const SecondaryButton = ({
   title,
-  shape,
+
   text,
   ...props
 }: ButtonProps) => {
@@ -41,9 +40,26 @@ export const SecondaryButton = ({
       justifyContent="center"
       alignItems="center"
       borderRadius="middle"
-      {...shape}
       {...props}>
       <Txt color="brandPrimary" {...text}>
+        {title}
+      </Txt>
+    </TouchableBox>
+  );
+};
+
+export const LinkButton = ({title, text, ...props}: ButtonProps) => {
+  return (
+    <TouchableBox
+      bg="transparent"
+      borderBottomWidth={1}
+      borderColor="brandPrimary"
+      padding="small"
+      justifyContent="center"
+      alignItems="center"
+      borderRadius="middle"
+      {...props}>
+      <Txt color="brandPrimary" fontSize="small" {...text}>
         {title}
       </Txt>
     </TouchableBox>
