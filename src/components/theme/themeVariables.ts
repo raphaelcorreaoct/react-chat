@@ -11,4 +11,10 @@ export const commoneTokens = {
     big: 16,
     giant: 22,
   },
+  radii: {
+    small: 4,
+    middle: 8,
+    big: 16,
+    giant: 22,
+  },
 };

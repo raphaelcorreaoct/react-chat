@@ -2,8 +2,12 @@ import {commoneTokens} from './themeVariables';
 
 export const lightTheme = {
   ...commoneTokens,
-  color: {
+  colors: {
+    brandPrimary: '#27B2EB',
+    onBrandPrimary: '#fff',
     background: '#fff',
-    onBackground: '#000',
+    onBackground: '#616161',
+    backgroundSecondary: '#fff',
+    onBackgroundSecondary: '#616161',
   },
 };
