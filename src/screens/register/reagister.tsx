@@ -1,10 +1,29 @@
-import React from 'react';
-import {Image} from 'react-native';
+import React, {useState} from 'react';
+import {ActivityIndicator, Alert, Image} from 'react-native';
 import {Box} from '../../components/Box';
-import {PrimaryButton, SecondaryButton} from '../../components/Buttons';
+import {PrimaryButton} from '../../components/Buttons';
 import {Input} from '../../components/Inputs';
+import auth from '@react-native-firebase/auth';
 
 export const Register = () => {
+  const [email, setEmail] = useState<string>('');
+  const [pssw, setPssw] = useState<string>('');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const handleNewAccount = async () => {
+    setIsLoading(true);
+    try {
+      await auth().createUserWithEmailAndPassword(email, pssw);
+      Alert.alert('Conta', 'Cadastrado com sucesso!');
+      setPssw('');
+      setEmail('');
+    } catch (e) {
+      console.error('Error::', e);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <Box
       bg="background"
@@ -20,6 +39,11 @@ export const Register = () => {
         mb="big"
         mt="giant"
         width="100%"
+        value={email}
+        onChangeText={setEmail}
+        autoCapitalize="none"
+        autoComplete="off"
+        autoCorrect={false}
       />
 
       <Input
@@ -27,23 +51,22 @@ export const Register = () => {
         placeholder="Senha"
         mb="big"
         width="100%"
-      />
-      <Input
-        bg="backgroundSecondary"
-        placeholder="E-mail"
-        mb="big"
-        mt="giant"
-        width="100%"
+        value={pssw}
+        onChangeText={setPssw}
+        autoCapitalize="none"
+        secureTextEntry
       />
 
-      <Input
-        bg="backgroundSecondary"
-        placeholder="Senha"
-        mb="big"
-        width="100%"
-      />
-      <PrimaryButton title="Entrar" mb="big" width="100%" />
-      <SecondaryButton title="Entrar com Google" mb="big" width="100%" />
+      {isLoading ? (
+        <ActivityIndicator size="large" />
+      ) : (
+        <PrimaryButton
+          title="Cadastrar"
+          mb="big"
+          width="100%"
+          onPress={handleNewAccount}
+        />
+      )}
     </Box>
   );
 };
