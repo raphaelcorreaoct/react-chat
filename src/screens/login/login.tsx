@@ -19,6 +19,7 @@ export const Login = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const handleLogin = async () => {
+    ß;
     setIsLoading(true);
     try {
       await auth().signInWithEmailAndPassword(email, pssw);
@@ -31,6 +32,8 @@ export const Login = () => {
       setIsLoading(false);
     }
   };
+
+  const handleLocinWithGoogle = () => {};
 
   return (
     <Box
@@ -90,7 +93,12 @@ export const Login = () => {
           onPress={handleLogin}
         />
       )}
-      <SecondaryButton title="Entrar com Google" mb="big" width="100%" />
+      <SecondaryButton
+        title="Entrar com Google"
+        mb="big"
+        width="100%"
+        onPress={handleLocinWithGoogle}
+      />
     </Box>
   );
 };
