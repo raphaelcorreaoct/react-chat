@@ -1,22 +1,16 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React from 'react';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {LoginStack} from './loginStack';
 import {AppStack} from './appStack';
 
-import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
+import {useAuth} from '../hooks/useAuth';
 
 export default function Routes() {
-  const [user, setUser] = useState<FirebaseAuthTypes.User | null>(null);
-  const navigationRef = useRef(null);
-
-  useEffect(() => {
-    const subscriber = auth().onAuthStateChanged(setUser);
-    return subscriber;
-  }, []);
+  const user = useAuth();
 
   return (
-    <NavigationContainer ref={navigationRef}>
+    <NavigationContainer>
       {!user && <LoginStack />}
       {user && <AppStack />}
     </NavigationContainer>
