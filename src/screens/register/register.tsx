@@ -14,6 +14,7 @@ export const Register = () => {
     setIsLoading(true);
     try {
       await auth().createUserWithEmailAndPassword(email, pssw);
+
       Alert.alert('Conta', 'Cadastrado com sucesso!');
       setPssw('');
       setEmail('');

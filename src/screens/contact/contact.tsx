@@ -4,6 +4,7 @@ import {Box} from '../../components/Box';
 import {Txt} from '../../components/Text';
 import {UserList} from '../../components/UserList';
 import {AuthUser} from '../../hooks/useAuth';
+import auth from '@react-native-firebase/auth';
 
 export const Contacts = () => {
   const [chatList, setUserList] = useState<AuthUser[]>([0]);
@@ -14,6 +15,14 @@ export const Contacts = () => {
     setTimeout(() => {
       setLoading(false);
     }, 3000);
+
+    // (async () => {
+    //   // const update = {
+    //   //   displayName: 'Raphael Correa',
+    //   //   photoURL: 'https://picsum.photos/200',
+    //   // };
+    //   // await auth().currentUser?.updateProfile(update);
+    // })();
   }, []);
 
   if (isLoadin)

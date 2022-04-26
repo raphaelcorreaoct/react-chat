@@ -25,9 +25,12 @@ export const HeaderNavigation = () => {
       justifyContent="space-between"
       alignItems="center"
       zIndex={1}>
-      <Box maxWidth={70} flex={1} flexDirection="row" alignItems="center">
-        <Image source={avatar} style={{width: 40, height: 40}} />
-        <Txt pl="middle">Olá {user?.displayName}</Txt>
+      <Box flex={1} flexDirection="row" alignItems="center">
+        <Image
+          source={avatar}
+          style={{width: 40, height: 40, borderRadius: 40}}
+        />
+        <Txt pl="middle">Olá {user?.displayName || user?.email}</Txt>
       </Box>
 
       <Box maxWidth={70} flex={1}>

@@ -18,10 +18,10 @@ export const UserListItem = ({user}: {user: AuthUser}) => {
       borderBottomWidth={1}
       flexDirection="row"
       alignItems="center"
-      onPress={() => navigation.navigate('chat')}>
+      onPress={() => navigation.navigate('chat', {userId: user?.uid})}>
       <Image source={avatar} style={{width: 40, height: 40}} />
       <Box ml="small">
-        <Txt> Raphael</Txt>
+        <Txt>{user?.displayName || user?.email}</Txt>
         <Txt fontSize="small"> E aee cara tudo bem...</Txt>
       </Box>
     </TouchableBox>
