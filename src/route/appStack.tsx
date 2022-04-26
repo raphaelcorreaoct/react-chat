@@ -6,6 +6,7 @@ import {Chat} from '../screens/chat/Chat';
 
 import {View} from 'react-native';
 import {HeaderNavigation} from '../components/HeaderNavigation';
+import {AddContact} from '../screens/AddContact/AddContact';
 
 const {Navigator, Screen} = createNativeStackNavigator();
 
@@ -18,6 +19,7 @@ export const AppStack = () => {
       }}>
       <Screen name="home" component={Home} />
       <Screen name="chat" component={Chat} />
+      <Screen name="AddContact" component={AddContact} />
     </Navigator>
   );
 };

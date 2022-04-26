@@ -23,12 +23,12 @@
     "react-native": "0.68.0",
     "react-native-gesture-handler": "^2.3.2",
     "react-native-pager-view": "^5.4.15",
+    "react-native-popup-menu": "^0.15.12",
     "react-native-reanimated": "^2.6.0",
     "react-native-safe-area-context": "^4.2.4",
     "react-native-screens": "^3.13.1",
     "react-native-status-bar-height": "^2.6.0",
     "react-native-tab-view": "^3.1.1",
-    "react-native-tooltip-menu": "^3.0.2",
     "styled-components": "^5.3.5",
     "styled-system": "^5.1.5"
   },

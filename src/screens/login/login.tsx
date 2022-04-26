@@ -19,7 +19,6 @@ export const Login = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const handleLogin = async () => {
-    ß;
     setIsLoading(true);
     try {
       await auth().signInWithEmailAndPassword(email, pssw);

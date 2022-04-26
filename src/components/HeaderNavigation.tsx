@@ -1,12 +1,12 @@
 import React from 'react';
-import {Box, TouchableBox} from './Box';
+import {Box} from './Box';
 import {getStatusBarHeight} from 'react-native-status-bar-height';
 import {Image} from 'react-native';
 import {useAuth} from '../hooks/useAuth';
 import {Txt} from './Text';
 
-import {TooltipMenu} from 'react-native-tooltip-menu';
 import auth from '@react-native-firebase/auth';
+import {HeaderMenu} from './HeaderMenu';
 
 export const HeaderNavigation = () => {
   const user = useAuth();
@@ -30,23 +30,13 @@ export const HeaderNavigation = () => {
           source={avatar}
           style={{width: 40, height: 40, borderRadius: 40}}
         />
-        <Txt pl="middle">Olá {user?.displayName || user?.email}</Txt>
+        <Txt pl="middle">
+          Olá {user?.displayName || user?.email?.split('@')[0] + '...'}
+        </Txt>
       </Box>
 
       <Box maxWidth={70} flex={1}>
-        <TooltipMenu
-          widthType="half"
-          trianglePosition="right"
-          items={[
-            {
-              label: 'Sair',
-              onPress: () => auth().signOut(),
-            },
-          ]}>
-          <Txt>Aqui</Txt>
-
-          <Box></Box>
-        </TooltipMenu>
+        <HeaderMenu />
       </Box>
     </Box>
   );
