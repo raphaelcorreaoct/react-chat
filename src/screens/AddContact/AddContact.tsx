@@ -2,10 +2,11 @@ import React, {useEffect, useState} from 'react';
 import {FlatList, ActivityIndicator} from 'react-native';
 import {Box} from '../../components/Box';
 import {Input} from '../../components/Inputs';
-import {Txt} from '../../components/Text';
+
 import {AuthUser} from '../../hooks/useAuth';
 import firestore from '@react-native-firebase/firestore';
 import {UserListItem} from '../../components/UserListItem';
+import auth from '@react-native-firebase/auth';
 
 let debounce = null;
 
@@ -14,9 +15,21 @@ export const AddContact = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [search, setSearch] = useState('');
   const RNFirebase = firestore().collection('Users');
+  const CollectionContact = firestore().collection('Contacts');
 
   const renderItem = ({item}: {item: AuthUser}) => {
-    return <UserListItem user={item} />;
+    return (
+      <UserListItem
+        user={item}
+        onPress={() => {
+          try {
+            CollectionContact.doc(auth().currentUser?.uid).set(item);
+          } catch (error) {
+            console.log(error);
+          }
+        }}
+      />
+    );
   };
 
   const onChange = () => {

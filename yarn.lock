@@ -6222,11 +6222,6 @@ react-native-tab-view@^3.1.1:
   resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-3.1.1.tgz#1f8d7a835ab4f5b1b1407ec8dddc1053b53fa3c6"
   integrity sha512-M5pRN6utQfytKWoKlKVzg5NbkYu308qNoW1khGTtEOTs1k14p2dHJ/BWOJoJYHKbPVUyZldbG9MFT7gUl4YHnw==
 
-react-native-tooltip-menu@^3.0.2:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/react-native-tooltip-menu/-/react-native-tooltip-menu-3.0.3.tgz#5b3e27d0d026dc948cb4eb7953109f6d46f6978b"
-  integrity sha512-cUPueL3W4N2GCauV30xAa99dmTpQldzp1e95IuaTI8wCrPuMMS8wU7CumwHT3NhwbhiCKFAmiFxRRgt8T+P1RA==
-
 react-native@0.68.0:
   version "0.68.0"
   resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.68.0.tgz#00204818c7fa5a9802ee73f3905a6d9b1c945a31"

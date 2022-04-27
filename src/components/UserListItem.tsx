@@ -6,7 +6,13 @@ import {Image} from 'react-native';
 import {AuthUser} from '../hooks/useAuth';
 import {useNavigation} from '@react-navigation/native';
 
-export const UserListItem = ({user}: {user: AuthUser}) => {
+export const UserListItem = ({
+  user,
+  onPress,
+}: {
+  user: AuthUser;
+  onPress?: () => void;
+}) => {
   const navigation = useNavigation();
 
   const avatar = user?.photoURL
@@ -18,11 +24,13 @@ export const UserListItem = ({user}: {user: AuthUser}) => {
       borderBottomWidth={1}
       flexDirection="row"
       alignItems="center"
-      onPress={() => navigation.navigate('chat', {userId: user?.uid})}>
+      onPress={() =>
+        onPress ? onPress() : navigation.navigate('chat', {userId: user?.uid})
+      }>
       <Image source={avatar} style={{width: 40, height: 40}} />
       <Box ml="small">
         <Txt>{user?.displayName || user?.email}</Txt>
-        <Txt fontSize="small"> E aee cara tudo bem...</Txt>
+        <Txt fontSize="small"></Txt>
       </Box>
     </TouchableBox>
   );

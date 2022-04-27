@@ -8,12 +8,14 @@ import {AuthUser} from '../hooks/useAuth';
 
 export const UserList = ({users}: {users: AuthUser[]}) => {
   const theme = useTheme();
+
+  console.log(users);
   return (
     <FlatList
       style={{flex: 1, backgroundColor: theme.colors.background}}
       data={users}
-      keyExtractor={item => item.providerId}
       renderItem={({item}) => <UserListItem user={item} />}
+      keyExtractor={item => item?.uid}
     />
   );
 };

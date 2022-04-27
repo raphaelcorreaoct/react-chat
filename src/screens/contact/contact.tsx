@@ -5,16 +5,27 @@ import {Txt} from '../../components/Text';
 import {UserList} from '../../components/UserList';
 import {AuthUser} from '../../hooks/useAuth';
 import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 
 export const Contacts = () => {
-  const [chatList, setUserList] = useState<AuthUser[]>([0]);
+  const [chatList, setUserList] = useState<AuthUser[]>([]);
   const [isLoadin, setLoading] = useState(true);
   const [error, setErro] = useState(false);
 
+  const CollectionContact = firestore().collection('Contacts');
+
   useEffect(() => {
-    setTimeout(() => {
+    setLoading(true);
+
+    const subscriber = CollectionContact.doc(
+      auth().currentUser?.uid,
+    ).onSnapshot(documentSnapshot => {
+      const data = documentSnapshot.data();
+      setUserList([data] as AuthUser[]);
       setLoading(false);
-    }, 3000);
+    });
+
+    return () => subscriber();
 
     // (async () => {
     //   // const update = {
